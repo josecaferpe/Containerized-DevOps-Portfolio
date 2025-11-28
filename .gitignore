@@ -1,0 +1,10 @@
+# Ignorar secretos
+.env
+
+# Ignorar logs y basura
+registros/
+__pycache__/
+*.pyc
+
+# Ignorar carpeta de entorno virtual
+venv/
