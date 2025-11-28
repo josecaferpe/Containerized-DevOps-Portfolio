@@ -1,8 +1,8 @@
 # Ignorar secretos
-.env
+**/.env
 
 # Ignorar logs y basura
-registros/
+**/registros/
 __pycache__/
 *.pyc
 
