@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+    uptime-kuma:
+          image: louislam/uptime-kuma:1
+                container_name: uptime-kuma
+                      restart: unless-stopped
+                            
+                            # PUERTOS
+                            #     # El de la izquierda es el de tu servidor (puedes cambiarlo)
+                            #         # El de la derecha es el interno de Kuma (NO TOCAR)
+                            #             ports:
+                            #                   - "3001:3001"
+                            #                         
+                            #                             # VOLÚMENES (Persistencia)
+                            #                                 # Guardaremos la configuración en la carpeta 'datos'
+                            #                                     volumes:
+                            #                                           - ./datos:/app/data
