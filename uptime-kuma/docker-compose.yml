@@ -9,3 +9,4 @@ services:
       - "3001:3001"
     volumes:
       - ./datos:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock
