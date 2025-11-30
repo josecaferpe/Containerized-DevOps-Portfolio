@@ -17,10 +17,10 @@ Bot de vigilancia ligero para webs estáticas. Actualmente configurado como **"I
 - **Highlights:** Consumo mínimo de recursos, parsing HTML rápido y alertas críticas.
 
 ### 3. Infraestructura & Monitorización (./uptime-kuma)
-Sistema de vigilancia de disponibilidad para todos los servicios del laboratorio.
+Sistema de vigilancia de disponibilidad y estado de servicios.
 - **Tech:** Uptime Kuma (Self-hosted).
-- **Arquitectura:** Servidor VPS (India) monitorizando nodos residenciales (España) mediante Heartbeats pasivos.
-
+- **Arquitectura:** Despliegue en VPS (India) para monitorización centralizada de servicios web y contenedores.
+- 
 ---
 
 ## Arquitectura del Laboratorio
