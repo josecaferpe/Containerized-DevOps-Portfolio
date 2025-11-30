@@ -7,7 +7,7 @@ Este repositorio centraliza diversas herramientas, bots y servicios desplegados 
 ## Proyectos Activos
 
 ### 1. Wallapop Hunter (./wallapop-hunter)
-Un sistema complejo de **Web Scraping con Selenium** diseñado para detectar oportunidades de mercado (PS5 Pro, Hardware) en tiempo real.
+Un sistema complejo de **Web Scraping con Selenium** diseñado para detectar oportunidades de mercado (Cualquier producto) en tiempo real.
 - **Tech:** Selenium WebDriver, Chrome Headless, Python, Docker.
 - **Highlights:** Evasión de detección, scroll infinito dinámico, modo visual y persistencia de datos JSON.
 
