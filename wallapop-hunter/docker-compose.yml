@@ -1,0 +1,23 @@
+services:
+  # SERVICIO 1: El Navegador (Chrome)
+  chrome:
+    image: selenium/standalone-chrome:latest
+    container_name: wallapop-chrome
+    shm_size: "2gb"  # Chrome come mucha RAM, necesita esto
+    restart: unless-stopped
+
+  # SERVICIO 2: Tu Bot (Python)
+  hunter:
+    build: .
+    container_name: wallapop-hunter
+    restart: unless-stopped
+    env_file:
+      - .env
+    depends_on:
+      - chrome
+    volumes:
+      # Compartimos zona horaria para los logs
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      # CAMBIO AQUÍ: Ahora mapeamos el json
+      - ./memoria.json:/app/memoria.json

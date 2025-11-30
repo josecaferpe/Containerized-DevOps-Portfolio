@@ -1,0 +1,4 @@
+amadeus
+requests
+python-dotenv
+schedule

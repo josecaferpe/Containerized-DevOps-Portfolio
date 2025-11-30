@@ -1,11 +1,26 @@
-# Ignorar secretos
+# --- Secretos (CRÍTICO) ---
+.env
 **/.env
 
-# Ignorar logs y basura
-**/registros/
+# --- Datos Locales del Bot ---
+memoria.json
+vistos.txt
+
+# --- Archivos basura de Python ---
 __pycache__/
 *.pyc
 
-# Ignorar carpeta de entorno virtual
+# --- Entornos Virtuales ---
 venv/
+**/venv/
+.venv/
+
+# --- Datos de Contenedores ---
 **/uptime-kuma/datos/
+
+# --- Capturas de pantalla (Selenium) ---
+*.png
+*.jpg
+
+# --- Temporales ---
+~
