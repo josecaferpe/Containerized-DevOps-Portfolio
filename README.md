@@ -20,7 +20,7 @@ Bot de vigilancia ligero para webs estáticas. Actualmente configurado como **"I
 Sistema de vigilancia de disponibilidad y estado de servicios.
 - **Tech:** Uptime Kuma (Self-hosted).
 - **Arquitectura:** Despliegue en VPS (India) para monitorización centralizada de servicios web y contenedores.
-- 
+
 ---
 
 ## Arquitectura del Laboratorio
