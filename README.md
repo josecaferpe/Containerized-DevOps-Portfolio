@@ -29,8 +29,8 @@ El sistema opera bajo un modelo de **Nube Híbrida**:
 
 | Rol | Ubicación | Servicios | Hardware |
 | :--- | :--- | :--- | :--- |
-| **Nube (Pública)** | Bangalore (VPS) | Monitorización (Kuma), Web Server | DigitalOcean Droplet |
-| **Edge (Residencial)** | España (Home Lab) | Web Scraping (Wallapop), Media Server | Mini PC (Intel N100) |
+| **Nube (Pública)** | Bangalore (VPS) | Monitorización (Kuma), Flight Searches | DigitalOcean Droplet |
+| **Edge (Residencial)** | España (Home Lab) | Web Scraper (Stateful and static) | Mini PC (Intel N100) |
 
 ## Stack Global
 
