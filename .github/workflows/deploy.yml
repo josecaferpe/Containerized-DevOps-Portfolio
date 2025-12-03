@@ -23,7 +23,7 @@ jobs:
         # Estos son los comandos que GitHub escribirá en tu servidor:
         script: |
           # 1. Entrar en la carpeta del proyecto
-          cd /opt/sysops-lab
+          cd /opt/sysops-lab/myrepo
           
           # 2. Dar permisos de ejecución a los scripts (por si acaso)
           chmod +x scripts/*.sh
