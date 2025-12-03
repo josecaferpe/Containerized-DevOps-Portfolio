@@ -7,7 +7,7 @@ Este repositorio centraliza diversas herramientas, bots y servicios desplegados 
 ## Proyectos Activos
 
 ### 1. Wallapop Hunter (./wallapop-hunter)
-Un sistema complejo de **Web Scraping con Selenium** diseñado para detectar oportunidades de mercado (PS5 Pro, Hardware) en tiempo real.
+Un sistema complejo de **Web Scraping con Selenium** diseñado para detectar oportunidades de mercado (Cualquier producto) en tiempo real.
 - **Tech:** Selenium WebDriver, Chrome Headless, Python, Docker.
 - **Highlights:** Evasión de detección, scroll infinito dinámico, modo visual y persistencia de datos JSON.
 
@@ -17,9 +17,9 @@ Bot de vigilancia ligero para webs estáticas. Actualmente configurado como **"I
 - **Highlights:** Consumo mínimo de recursos, parsing HTML rápido y alertas críticas.
 
 ### 3. Infraestructura & Monitorización (./uptime-kuma)
-Sistema de vigilancia de disponibilidad para todos los servicios del laboratorio.
+Sistema de vigilancia de disponibilidad y estado de servicios.
 - **Tech:** Uptime Kuma (Self-hosted).
-- **Arquitectura:** Servidor VPS (India) monitorizando nodos residenciales (España) mediante Heartbeats pasivos.
+- **Arquitectura:** Despliegue en VPS (India) para monitorización centralizada de servicios web y contenedores.
 
 ---
 
@@ -29,8 +29,8 @@ El sistema opera bajo un modelo de **Nube Híbrida**:
 
 | Rol | Ubicación | Servicios | Hardware |
 | :--- | :--- | :--- | :--- |
-| **Nube (Pública)** | Bangalore (VPS) | Monitorización (Kuma), Web Server | DigitalOcean Droplet |
-| **Edge (Residencial)** | España (Home Lab) | Web Scraping (Wallapop), Media Server | Mini PC (Intel N100) |
+| **Nube (Pública)** | Bangalore (VPS) | Monitorización (Kuma), Flight Searches | DigitalOcean Droplet |
+| **Edge (Residencial)** | España (Home Lab) | Web Scraper (Stateful and static) | Mini PC (Intel N100) |
 
 ## Stack Global
 
