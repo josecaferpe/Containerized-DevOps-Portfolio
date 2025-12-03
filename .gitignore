@@ -10,7 +10,7 @@ vistos.txt
 __pycache__/
 *.pyc
 
-# --- Entornos Virtuales ---
+# --- Entornos Virtuales (Python) ---
 venv/
 **/venv/
 .venv/
