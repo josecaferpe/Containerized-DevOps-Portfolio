@@ -1,3 +1,10 @@
+---
+## 🚦 Estado del Sistema
+- **Infraestructura:** VPS en India 🇮🇳
+- **Despliegue:** Automático (GitHub Actions) ✅
+- **Estado:** 🟢 OPERATIVO
+---
+
 # SysOps & DevOps Lab
 
 Bienvenido a mi laboratorio personal de **Ingeniería de Sistemas, Automatización y DevOps**.
