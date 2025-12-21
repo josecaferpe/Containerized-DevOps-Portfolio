@@ -117,3 +117,13 @@ Frecuencia: 60.0 minutos
 [2025-11-28 22:43:59] 🚀 <b>Bot Iniciado</b>
 Objetivo: https://sede.inap.gob.es/tai
 Frecuencia: 60.0 minutos
+[2025-12-06 16:40:56] 🚀 <b>Bot Iniciado</b>
+Objetivo: https://sede.inap.gob.es/tai
+Frecuencia: 60.0 minutos
+[2025-12-06 16:48:34] 🚀 <b>Bot Iniciado</b>
+Objetivo: https://sede.inap.gob.es/tai
+Frecuencia: 60.0 minutos
+[2025-12-06 16:48:35] ALERTA ENVIADA: convocatoria 2024
+[2025-12-06 16:54:50] 🚀 <b>Bot Iniciado</b>
+Objetivo: https://sede.inap.gob.es/tai
+Frecuencia: 60.0 minutos
