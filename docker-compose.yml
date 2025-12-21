@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  # 1. Tu Bot de Wallapop
+  wallapop-hunter:
+    build: ./wallapop-hunter
+    container_name: wallapop-hunter
+    restart: unless-stopped
+    # env_file: ./wallapop-hunter/.env 
+
+  # 2. Tu Scraper (Vuelos/BOE)
+  scraper-bot:
+    build: ./scraper-bot
+    container_name: scraper-bot
+    restart: unless-stopped
+    
+  # 3. Monitorización (Uptime Kuma)
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    restart: always
+    ports:
+      - "3001:3001"
+    volumes:
+      - uptime-kuma-data:/app/data
+
+volumes:
+  uptime-kuma-data:
