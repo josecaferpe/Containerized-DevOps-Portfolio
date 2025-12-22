@@ -1,31 +1,9 @@
-version: '3.8'
-
 services:
-  # 1. Tu Bot de Wallapop
-  wallapop-hunter:
-    build: ./wallapop-hunter
-    container_name: wallapop-hunter
-    restart: unless-stopped
-    # env_file: ./wallapop-hunter/.env 
-
-  # 2. Tu Scraper (Vuelos/BOE)
-  scraper-bot:
-    build: ./scraper-bot
-    container_name: scraper-bot
-    restart: unless-stopped
-    
-  # 3. Monitorización (Uptime Kuma)
-  uptime-kuma:
-    image: louislam/uptime-kuma:1
-    container_name: uptime-kuma
-    restart: always
-    # 👇 Añade esta línea mágica:
-    profiles: ["monitor"] 
-    ports:
-      - "3001:3001"
-    volumes:
-      - uptime-kuma-data:/app/data
-# 4. El Capitán del Barco (Portainer)
+  # -------------------------------------------------------
+  # 1. INFRAESTRUCTURA Y GESTIÓN
+  # -------------------------------------------------------
+  
+  # El Capitán (Gestión visual de Docker)
   portainer:
     image: portainer/portainer-ce:latest
     container_name: portainer
@@ -33,8 +11,62 @@ services:
     ports:
       - "9000:9000"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock  # 👈 Vital: Le da permiso para controlar Docker
-      - portainer_data:/data                        # 👈 Donde guarda tus claves y usuarios
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+  # El Vigía (Monitor de estado)
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    restart: always
+    ports:
+      - "3001:3001"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - uptime-kuma-data:/app/data  # Usamos volumen nominal para persistencia segura
+
+  # Los Ojos del Cazador (Navegador Chrome para Wallapop)
+  selenium:
+    image: selenium/standalone-chrome:latest
+    container_name: selenium
+    restart: always
+    shm_size: "2gb"  # Vital para que Chrome no colapse
+    ports:
+      - "4444:4444"
+
+  # -------------------------------------------------------
+  # 2. TUS BOTS (APLICACIONES)
+  # -------------------------------------------------------
+
+  # Bot 1: Francotirador INAP (Scraper)
+  scraper-bot:
+    build: 
+      context: ./scraper-bot  # 👈 Entra en su carpeta para construir
+    container_name: scraper-bot
+    restart: always
+    env_file:
+      - ./scraper-bot/.env    # 👈 Lee SU archivo de secretos
+    volumes:
+      - ./scraper-bot/registros:/app/logs
+
+  # Bot 2: Cazador de Wallapop
+  wallapop-hunter:
+    build: 
+      context: ./wallapop-hunter # 👈 Entra en su carpeta
+    container_name: wallapop-hunter
+    restart: always
+    depends_on:
+      - selenium
+    environment:
+      - SELENIUM_HOST=selenium
+      - TZ=Europe/Madrid
+    env_file:
+      - ./wallapop-hunter/.env   # 👈 Lee SU archivo de secretos
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - ./wallapop-hunter/memoria.json:/app/memoria.json # 👈 Ruta corregida
+
 volumes:
-  uptime-kuma-data:
   portainer_data:
+  uptime-kuma-data:
