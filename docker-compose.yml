@@ -25,6 +25,16 @@ services:
       - "3001:3001"
     volumes:
       - uptime-kuma-data:/app/data
-
+# 4. El Capitán del Barco (Portainer)
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock  # 👈 Vital: Le da permiso para controlar Docker
+      - portainer_data:/data                        # 👈 Donde guarda tus claves y usuarios
 volumes:
   uptime-kuma-data:
+  portainer_data:
