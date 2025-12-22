@@ -81,8 +81,9 @@ def get_driver():
     for i in range(5):
         try:
             print(f"🔌 Conectando con Chrome (Intento {i+1}/5)...")
+            selenium_host = os.getenv('SELENIUM_HOST', 'selenium')
             driver = webdriver.Remote(
-                command_executor='http://chrome:4444/wd/hub',
+                command_executor=f"http://{selenium_host}:4444/wd/hub",
                 options=options
             )
             print("✅ Conexión con Chrome establecida.")

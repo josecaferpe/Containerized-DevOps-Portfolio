@@ -15,7 +15,7 @@ CHECK_INTERVAL = int(os.getenv('CHECK_INTERVAL', 1800))
 TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
 TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 EMAIL_USER = os.getenv('EMAIL_USER')       # Tu gmail
-EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD') # La contraseña de aplicación de 16 letras
+EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD') # La contraseña de aplicación(16 letras)
 
 LOG_FILE = "/app/logs/historial.txt"
 
