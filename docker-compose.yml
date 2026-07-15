@@ -1,72 +1,85 @@
 services:
-  # -------------------------------------------------------
-  # 1. INFRAESTRUCTURA Y GESTIÓN
-  # -------------------------------------------------------
-  
-  # El Capitán (Gestión visual de Docker)
-  portainer:
-    image: portainer/portainer-ce:latest
-    container_name: portainer
-    restart: always
+  # --- EL PROXY INVERSO ---
+  proxy:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: local-proxy
     ports:
-      - "9000:9000"
+      - '80:80'
+      - '81:81'
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
+      - ./proxy-data:/data
+      - ./proxy-letsencrypt:/etc/letsencrypt
+    restart: always
 
-  # El Vigía (Monitor de estado)
+  # 1. Tu bot monitor
+  scraper-bot:
+    build: ./scraper-bot
+    container_name: local-scraper-bot
+    volumes:
+      - ./scraper-bot:/app
+    env_file:
+      - ./scraper-bot/.env
+    restart: always
+
+  # 2. Tu bot hunter
+  wallapop-hunter:
+    build: ./wallapop-hunter
+    container_name: local-wallapop-hunter
+    volumes:
+      - ./wallapop-hunter:/app
+    env_file:
+      - ./wallapop-hunter/.env
+    restart: always
+
+  # 3. Selenium adaptado para Apple Silicon
+  selenium:
+    image: seleniarm/standalone-chromium:latest
+    container_name: local-selenium
+    ports:
+      - "4444:4444"
+      - "7900:7900"
+    shm_size: 2gb
+    restart: always
+
+  # 4. Uptime Kuma
   uptime-kuma:
     image: louislam/uptime-kuma:1
-    container_name: uptime-kuma
+    container_name: local-uptime-kuma
+    volumes:
+      - uptime-kuma-data:/app/data
     restart: always
     ports:
       - "3001:3001"
+
+  # 5. Portainer Local
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: local-portainer
+    command: -H unix:///var/run/docker.sock
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - uptime-kuma-data:/app/data  # Usamos volumen nominal para persistencia segura
-
-  # Los Ojos del Cazador (Navegador Chrome para Wallapop)
-  selenium:
-    image: selenium/standalone-chrome:latest
-    container_name: selenium
+      - portainer-data:/data
     restart: always
-    shm_size: "2gb"  # Vital para que Chrome no colapse
     ports:
-      - "4444:4444"
+      - "9002:9000"
 
-  # -------------------------------------------------------
-  # 2. TUS BOTS (APLICACIONES)
-  # -------------------------------------------------------
-
-  # Bot 1: Francotirador INAP (Scraper)
-  scraper-bot:
-    build: 
-      context: ./scraper-bot  # 👈 Entra en su carpeta para construir
-    container_name: scraper-bot
-    restart: always
-    env_file:
-      - ./scraper-bot/.env    # 👈 Lee SU archivo de secretos
-    volumes:
-      - ./scraper-bot/registros:/app/logs
-
-  # Bot 2: Cazador de Wallapop
-  wallapop-hunter:
-    build: 
-      context: ./wallapop-hunter # 👈 Entra en su carpeta
-    container_name: wallapop-hunter
-    restart: always
-    depends_on:
-      - selenium
+  # --- El NUEVO COMPONENTE: PI-HOLE (DNS & Bloqueador) ---
+# --- PI-HOLE ---
+  pihole:
+    image: pihole/pihole:latest
+    container_name: local-dns-pihole
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
     environment:
-      - SELENIUM_HOST=selenium
-      - TZ=Europe/Madrid
-    env_file:
-      - ./wallapop-hunter/.env   # 👈 Lee SU archivo de secretos
+      TZ: 'Europe/Madrid'
+      # 🔑 Esta es la nueva variable oficial para Pi-hole v6:
+      FTLCONF_webserver_api_password: '${PIHOLE_FTL_PASSWORD}'
     volumes:
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
-      - ./wallapop-hunter/memoria.json:/app/memoria.json # 👈 Ruta corregida
+      - './etc-pihole:/etc/pihole'
+      - './etc-dnsmasq.d:/etc/dnsmasq.d'
+    restart: always
 
 volumes:
-  portainer_data:
   uptime-kuma-data:
+  portainer-data:
