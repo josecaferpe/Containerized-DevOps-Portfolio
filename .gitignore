@@ -23,4 +23,11 @@ venv/
 *.jpg
 
 # --- Temporales ---
+etc-pihole/*.db*
+etc-pihole/
+etc-dnsmasq.d/
+proxy-data/
+proxy-letsencrypt/
+scraper-bot/logs/
+scraper-bot/registros/
 ~
