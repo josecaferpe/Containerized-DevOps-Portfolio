@@ -6,6 +6,8 @@ name: 🚀 CD - Auto Deploy
 on:
   push:
     branches: [ "main" ]
+    paths-ignore:
+      - '**.md'
 
 jobs:
   deploy:
