@@ -42,12 +42,13 @@ services:
     shm_size: 2gb
     restart: always
 
-  # 4. Uptime Kuma
+# 4. Uptime Kuma
   uptime-kuma:
     image: louislam/uptime-kuma:1
     container_name: local-uptime-kuma
     volumes:
       - uptime-kuma-data:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock
     restart: always
     ports:
       - "3001:3001"
