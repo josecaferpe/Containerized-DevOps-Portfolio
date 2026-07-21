@@ -2,7 +2,7 @@
 
 Documento de referencia rápida con la información de red de todos los servicios, en ambos entornos de la arquitectura híbrida.
 
-> ⚠️ Este archivo puede contener nombres de dominio y estructura interna. No incluir contraseñas ni tokens — esos van en `.env`, que nunca se sube al repositorio.
+> ⚠️ Este archivo contiene nombres de dominio y estructura interna. No incluye contraseñas ni tokens, los .env nunca se suben al repoistorio.
 
 ---
 
@@ -49,8 +49,9 @@ Documento de referencia rápida con la información de red de todos los servicio
 
 ## 🆘 Nota sobre acceso de emergencia a Pi-hole
 
-Pi-hole no tiene su puerto web (80) publicado al host en ninguno de los dos entornos — solo es accesible a través de NPM. Si el DNS falla y necesitas entrar a Pi-hole sin depender de él:
-- **Local:** añade temporalmente `127.0.0.1 pihole.lan` a `/etc/hosts` (o publica el puerto 80 del contenedor manualmente con `docker run`/editando el compose)
+- Pi-hole no tiene su puerto web (80) publicado al host en ninguno de los dos entornos — solo es accesible a través de NPM.
+Si el DNS falla y es necesario entrar a Pi-hole sin depender de él:
+- **Local:** añadir temporalmente `127.0.0.1 pihole.lan` a `/etc/hosts` (o publicar el puerto 80 del contenedor manualmente con `docker run`/editando el compose)
 - **India:** análogo, usando la IP pública `128.199.29.231`
 
 ---
