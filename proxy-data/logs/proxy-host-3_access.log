@@ -1,1 +1,0 @@
-[13/Jul/2026:12:12:53 +0000] - 302 302 - GET http uptime.lan "/" [Client 172.18.0.1] [Length 32] [Gzip -] [Sent-to local-uptime-kuma] "curl/8.6.0" "-"

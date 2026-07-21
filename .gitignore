@@ -31,3 +31,4 @@ proxy-letsencrypt/
 scraper-bot/logs/
 scraper-bot/registros/
 ~
+.DS_Store
