@@ -15,6 +15,10 @@ COPY . .
 
 # Crear usuario no-root (Seguridad)
 RUN adduser --disabled-password --gecos '' sysadmin
+
+# Crear carpeta de logs con el propietario correcto ANTES de bajar privilegios
+RUN mkdir -p /app/logs && chown -R sysadmin:sysadmin /app/logs
+
 USER sysadmin
 
 # Comando por defecto
