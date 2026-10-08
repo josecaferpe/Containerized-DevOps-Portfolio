@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  multi-scraper:
+    build: .
+    container_name: local-multi-scraper
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./config.yaml:/app/config.yaml:ro
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 128M

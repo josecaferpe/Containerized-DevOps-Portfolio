@@ -1,0 +1,40 @@
+telegram:
+  bot_token: "${TELEGRAM_BOT_TOKEN}"
+  chat_id: "${TELEGRAM_CHAT_ID}"
+
+targets:
+  - id: "inap_tai"
+    name: "INAP - Sede Electrónica TAI"
+    url: "https://sede.inap.gob.es/tai"
+    selector: "main, #content, .region-content, article"
+    keywords: ["convocatoria 2025", "2025", "2026", "convocatoria 2026"]
+
+  - id: "caib_oposicions"
+    name: "CAIB - Portal d'Oposicions"
+    url: "https://oposicions.caib.es/index.jsp?lang=es"
+    selector: "body, #contenido, .contenido, table"
+    keywords: ["informatico", "informático", "TIC", "informàtic", "informàtica"]
+
+  - id: "consell_mallorca"
+    name: "Consell de Mallorca - Selecció"
+    url: "https://seleccio.conselldemallorca.cat/portalseleccio/convocatories/oposicions?lang=es"
+    selector: "main, .content, table, .card, body"
+    keywords: ["informatico", "informático", "TIC", "informàtic", "informàtica"]
+
+  - id: "ajuntament_palma_oferta"
+    name: "Ajuntament de Palma - Oferta Pública"
+    url: "https://www.palma.es/oferta-p%C3%BAblica-de-feina-ajuntament"
+    selector: "main, #content, article, .journal-content-article, body"
+    keywords: ["informatico", "informático", "TIC", "informàtic", "informàtica"]
+
+  - id: "ajuntament_palma_convocatories"
+    name: "Ajuntament de Palma - Convocatòries"
+    url: "https://oposicions.palma.cat/convocatories"
+    selector: "main, table, .convocatoria, #content, body"
+    keywords: ["informatico", "informático", "TIC", "informàtic", "informàtica"]
+
+  - id: "emt_palma_board"
+    name: "EMT Palma - Tauler d'Anuncis"
+    url: "https://emtpalma.eadministracio.cat/board"
+    selector: "main, table, .board-list, #content, body"
+    keywords: ["informatico", "informático", "TIC", "informàtic", "informàtica"]
