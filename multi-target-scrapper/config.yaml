@@ -1,3 +1,6 @@
+# Minutos entre ciclos. Si defines SCRAPE_INTERVAL_MINUTES en el .env, esa variable tiene prioridad.
+interval_minutes: 30
+
 telegram:
   bot_token: "${TELEGRAM_BOT_TOKEN}"
   chat_id: "${TELEGRAM_CHAT_ID}"

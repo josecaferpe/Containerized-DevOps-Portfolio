@@ -1,0 +1,20 @@
+{
+  "inap_tai": {
+    "hash": "b6642fc58e60504a00a1eedacb316a9347d745c9a0b8e63ff5c97ca2efa8daf5"
+  },
+  "caib_oposicions": {
+    "hash": "06d77219662972ab9b98dd984b939f2c76cf99c69858772eaeff2edda36b3135"
+  },
+  "consell_mallorca": {
+    "hash": "62dfbeba50110edb72f83dde2d847e09913ff63f75a401c025f1720c1f4a7aff"
+  },
+  "ajuntament_palma_oferta": {
+    "hash": "6bb8f2ed69d39d9a3ce603281548b3becbd9ba89d1877fc672da931fc25a2486"
+  },
+  "ajuntament_palma_convocatories": {
+    "hash": "69eca09463a751c3ee7f6188f3583eb93a2ba4dcdfa2da29a68c53c6fb4bc954"
+  },
+  "emt_palma_board": {
+    "hash": "2ff3393089bdf7cdbfed96c320f0a888b740b8593619fa1d84dda9d048379422"
+  }
+}
